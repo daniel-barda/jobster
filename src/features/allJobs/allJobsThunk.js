@@ -7,7 +7,7 @@ export const getAllJobsThunk = async (_, thunkAPI) => {
     let url = `/jobs?status=${searchStatus}&jobType=${searchType}&sort=${sort}&page=${page}`;
 
     if (search) {
-      url += `&${search}`;
+      url += `&search=${search}`;
     }
 
     const res = await customFetch.get(url);
