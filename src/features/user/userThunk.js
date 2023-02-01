@@ -8,7 +8,7 @@ export const registerUserThunk = async (url, user, thunkAPI) => {
     const res = await customFetch.post(url, user);
     return res.data;
   } catch (error) {
-    return checkForUnauthorizedResponse(error, thunkAPI);
+    return thunkAPI.rejectWithValue(error.response.data.msg);
   }
 };
 
@@ -17,7 +17,7 @@ export const loginUserThunk = async (url, user, thunkAPI) => {
     const res = await customFetch.post(url, user);
     return res.data;
   } catch (error) {
-    return checkForUnauthorizedResponse(error, thunkAPI);
+    return thunkAPI.rejectWithValue(error.response.data.msg);
   }
 };
 
